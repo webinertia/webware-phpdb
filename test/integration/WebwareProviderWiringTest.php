@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * This file is part of the Webware Skeleton package.
+ * This file is part of the Webware PhpDb package.
  *
  * Copyright (c) 2026 Joey Smith <jsmith@webinertia.net>
  * and contributors.
@@ -12,13 +12,13 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WebwareTestIntegration\Skeleton;
+namespace WebwareTestIntegration\PhpDb;
 
 use JsonException;
+use PhpDb\WebwareProvider;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Webware\Skeleton\ConfigProvider;
 
 use function file_get_contents;
 use function json_decode;
@@ -31,8 +31,8 @@ use const JSON_THROW_ON_ERROR;
  * Renaming the namespace but missing `extra.laminas.config-provider` breaks every
  * consumer silently, so the two are asserted to agree.
  */
-#[CoversClass(ConfigProvider::class)]
-final class ConfigProviderWiringTest extends TestCase
+#[CoversClass(WebwareProvider::class)]
+final class WebwareProviderWiringTest extends TestCase
 {
     /**
      * @throws JsonException
@@ -46,7 +46,7 @@ final class ConfigProviderWiringTest extends TestCase
         $composer = json_decode($json, associative: true, flags: JSON_THROW_ON_ERROR);
 
         self::assertSame(
-            ConfigProvider::class,
+            WebwareProvider::class,
             $composer['extra']['laminas']['config-provider'],
         );
     }

@@ -1,11 +1,12 @@
 {
-    "name": "webware/skeleton",
-    "description": "Greenfield starter for Webware packages: shared tooling config, the organization's required CI workflow contract, and a containerized dev environment.",
+    "name": "webware/webware-phpdb",
+    "description": "PhpDb bridge for the Webware stack: shadows the PhpDb root namespace so packages can replace individual php-db/phpdb classes.",
     "license": "BSD-3-Clause",
     "keywords": [
         "webware",
         "mezzio",
-        "skeleton"
+        "php-db",
+        "bridge"
     ],
     "authors": [
         {
@@ -16,11 +17,12 @@
     ],
     "extra": {
         "laminas": {
-            "config-provider": "Webware\\Skeleton\\ConfigProvider"
+            "config-provider": "PhpDb\\WebwareProvider"
         }
     },
     "require": {
         "php": "~8.4.1 || ~8.5.0",
+        "php-db/phpdb": "0.6.x-dev",
         "psr/container": "^2.0"
     },
     "require-dev": {
@@ -33,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Webware\\Skeleton\\": "src/"
+            "PhpDb\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "WebwareTest\\Skeleton\\": "test/unit/",
-            "WebwareTestIntegration\\Skeleton\\": "test/integration/"
+            "WebwareTest\\PhpDb\\": "test/unit/",
+            "WebwareTestIntegration\\PhpDb\\": "test/integration/"
         }
     },
     "minimum-stability": "dev",
