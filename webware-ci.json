@@ -4,10 +4,23 @@
     "8.5"
   ],
   "run_integration": true,
+  "db_image": "mysql:9.7",
+  "db_env_json": {
+    "MYSQL_ROOT_HOST": "%",
+    "MYSQL_ALLOW_EMPTY_PASSWORD": "true",
+    "MYSQL_DATABASE": "webware"
+  },
+  "db_port": 3306,
+  "db_health_cmd": "mysqladmin ping -h127.0.0.1 --silent",
   "enable_codecov": true,
   "enable_infection": true,
   "coverage_php_version": "8.5",
   "min_msi": "95",
-  "min_covered_msi": "95"
+  "min_covered_msi": "95",
+  "test_env_json": {
+    "TESTS_PHPDB_ADAPTER_MYSQL_HOSTNAME": "127.0.0.1",
+    "TESTS_PHPDB_ADAPTER_PGSQL": "0",
+    "TESTS_PHPDB_ADAPTER_SQLITE": "0"
+  }
 }
 
