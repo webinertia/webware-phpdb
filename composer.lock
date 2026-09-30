@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c59cdc0c725a0104e1938408356696e6",
+    "content-hash": "07377bce0fa437e217fed81e932ef050",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -2295,6 +2295,187 @@
                 "source": "https://github.com/phar-io/version/tree/3.2.1"
             },
             "time": "2022-02-21T01:04:05+00:00"
+        },
+        {
+            "name": "php-db/phpdb-mysql",
+            "version": "0.5.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-db/phpdb-mysql.git",
+                "reference": "463a8209370ebb73c5db19424175e6945b0ff57e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-db/phpdb-mysql/zipball/463a8209370ebb73c5db19424175e6945b0ff57e",
+                "reference": "463a8209370ebb73c5db19424175e6945b0ff57e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
+                "php-db/phpdb": "^0.6.x-dev"
+            },
+            "require-dev": {
+                "ext-mysqli": "*",
+                "ext-pdo_mysql": "*",
+                "infection/infection": "^0.34.2",
+                "php-db/phpdb-qa-tools": "0.1.x-dev",
+                "phpunit/phpunit": "^12.5.33"
+            },
+            "suggest": {
+                "ext-mysqli": "Required for MySQLi support",
+                "ext-pdo_mysql": "Required for PDO MySQL support",
+                "laminas/laminas-eventmanager": "Required for TableGateway events support"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laminas": {
+                    "config-provider": "PhpDb\\Mysql\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpDb\\Mysql\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "MySQL support for php-db",
+            "homepage": "https://github.com/php-db/phpdb-mysql/discussions",
+            "keywords": [
+                "db",
+                "laminas",
+                "mezzio",
+                "mysql",
+                "php-db"
+            ],
+            "support": {
+                "forum": "https://github.com/php-db/phpdb-mysql/discussions",
+                "issues": "https://github.com/php-db/phpdb-mysql/issues",
+                "source": "https://github.com/php-db/phpdb-mysql"
+            },
+            "time": "2026-09-04T04:45:13+00:00"
+        },
+        {
+            "name": "php-db/phpdb-pgsql",
+            "version": "0.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-db/phpdb-pgsql.git",
+                "reference": "deddafa64572441612da4dbeb7b1b8cee76980de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-db/phpdb-pgsql/zipball/deddafa64572441612da4dbeb7b1b8cee76980de",
+                "reference": "deddafa64572441612da4dbeb7b1b8cee76980de",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
+                "php-db/phpdb": "^0.6.0"
+            },
+            "require-dev": {
+                "ext-pdo_pgsql": "*",
+                "ext-pgsql": "*",
+                "infection/infection": "^0.34.1",
+                "php-db/phpdb-qa-tools": "0.1.x-dev",
+                "phpunit/phpunit": "^11.5.42"
+            },
+            "suggest": {
+                "ext-pdo_pgsql": "*",
+                "ext-pgsql": "*",
+                "laminas/laminas-servicemanager": "Laminas\\ServiceManager component"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laminas": {
+                    "config-provider": "PhpDb\\Pgsql\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpDb\\Pgsql\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "PostgreSQL support for php-db",
+            "homepage": "https://php-db.dev",
+            "keywords": [
+                "db",
+                "pgsql",
+                "php-db"
+            ],
+            "support": {
+                "forum": "https://github.com/php-db/phpdb-pgsql/discussions",
+                "issues": "https://github.com/php-db/phpdb-pgsql/issues",
+                "source": "https://github.com/php-db/phpdb-pgsql"
+            },
+            "time": "2026-08-31T03:38:13+00:00"
+        },
+        {
+            "name": "php-db/phpdb-sqlite",
+            "version": "0.3.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-db/phpdb-sqlite.git",
+                "reference": "8bfcfaa2f7859108f374d59cf1596c1a56417526"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-db/phpdb-sqlite/zipball/8bfcfaa2f7859108f374d59cf1596c1a56417526",
+                "reference": "8bfcfaa2f7859108f374d59cf1596c1a56417526",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
+                "php-db/phpdb": "^0.6.0",
+                "webmozart/assert": "^1.12.0 || ^2.0"
+            },
+            "require-dev": {
+                "ext-pdo": "*",
+                "ext-pdo_sqlite": "*",
+                "infection/infection": "^0.34.1",
+                "php-db/phpdb-qa-tools": "0.1.x-dev",
+                "phpunit/phpunit": "^11.5.42"
+            },
+            "suggest": {
+                "laminas/laminas-servicemanager": "Laminas\\ServiceManager component"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laminas": {
+                    "config-provider": "PhpDb\\Sqlite\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpDb\\Sqlite\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "SQLite support for php-db",
+            "homepage": "https://github.com/php-db/phpdb-sqlite/discussions",
+            "keywords": [
+                "db",
+                "php-db",
+                "sqlite"
+            ],
+            "support": {
+                "forum": "https://github.com/php-db/phpdb-sqlite/discussions",
+                "issues": "https://github.com/php-db/phpdb-sqlite/issues",
+                "source": "https://github.com/php-db/phpdb-sqlite"
+            },
+            "time": "2026-09-09T04:39:44+00:00"
         },
         {
             "name": "php-standard-library/async",
@@ -9604,16 +9785,16 @@
         },
         {
             "name": "webware/webware-tools",
-            "version": "1.0.0-beta.5",
+            "version": "1.0.0-beta.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webinertia/webware-tools.git",
-                "reference": "fa188188a6a755e91ea1bac9c9f22cda6b7b019c"
+                "reference": "55d093d7b75c20f340b7bdcb206851cd7e2842c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webinertia/webware-tools/zipball/fa188188a6a755e91ea1bac9c9f22cda6b7b019c",
-                "reference": "fa188188a6a755e91ea1bac9c9f22cda6b7b019c",
+                "url": "https://api.github.com/repos/webinertia/webware-tools/zipball/55d093d7b75c20f340b7bdcb206851cd7e2842c5",
+                "reference": "55d093d7b75c20f340b7bdcb206851cd7e2842c5",
                 "shasum": ""
             },
             "require": {
@@ -9642,15 +9823,18 @@
             ],
             "support": {
                 "issues": "https://github.com/webinertia/webware-tools/issues",
-                "source": "https://github.com/webinertia/webware-tools/tree/1.0.0-beta.5"
+                "source": "https://github.com/webinertia/webware-tools/tree/1.0.0-beta.6"
             },
-            "time": "2026-09-26T22:50:13+00:00"
+            "time": "2026-09-30T16:54:18+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
         "php-db/phpdb": 20,
+        "php-db/phpdb-mysql": 20,
+        "php-db/phpdb-pgsql": 20,
+        "php-db/phpdb-sqlite": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,
