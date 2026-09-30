@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace WebwareTestIntegration\PhpDb;
 
 use JsonException;
+use PhpDb\Session\SessionProvider;
 use PhpDb\WebwareProvider;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -42,11 +43,11 @@ final class WebwareProviderWiringTest extends TestCase
     {
         $json = (string) file_get_contents(__DIR__ . '/../../composer.json');
 
-        /** @var array{extra: array{laminas: array{'config-provider': string}}} $composer */
+        /** @var array{extra: array{laminas: array{'config-provider': list<string>}}} $composer */
         $composer = json_decode($json, associative: true, flags: JSON_THROW_ON_ERROR);
 
         self::assertSame(
-            WebwareProvider::class,
+            [WebwareProvider::class, SessionProvider::class],
             $composer['extra']['laminas']['config-provider'],
         );
     }
