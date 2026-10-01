@@ -53,7 +53,7 @@ final class WebwareProvider
     public const string BACKUP_SCHEMA_KEY = 'backup_schema';
 
     /** @return array<string, mixed> */
-    private function getDependencies(): array
+    public function getDependencies(): array
     {
         return [
             'factories' => [
