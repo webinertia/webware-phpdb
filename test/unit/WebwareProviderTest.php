@@ -31,6 +31,15 @@ use PHPUnit\Framework\TestCase;
 final class WebwareProviderTest extends TestCase
 {
     #[Test]
+    public function getDependenciesRegistersTheSchemaFactory(): void
+    {
+        self::assertSame(
+            ['factories' => [SchemaFactory::class => SchemaFactoryFactory::class]],
+            new WebwareProvider()->getDependencies(),
+        );
+    }
+
+    #[Test]
     public function registersTheSchemaFactoryAndItsConfiguration(): void
     {
         $expected = [
