@@ -17,7 +17,10 @@
     ],
     "extra": {
         "laminas": {
-            "config-provider": "PhpDb\\WebwareProvider"
+            "config-provider": [
+                "PhpDb\\WebwareProvider",
+                "PhpDb\\Session\\SessionProvider"
+            ]
         }
     },
     "require": {
@@ -27,7 +30,9 @@
     },
     "require-dev": {
         "infection/infection": "^0.35.0",
+        "laminas/laminas-diactoros": "^3.5",
         "laminas/laminas-servicemanager": "^4.5",
+        "mezzio/mezzio-session": "^1.0",
         "php-db/phpdb-mysql": "^0.5.x-dev",
         "php-db/phpdb-pgsql": "^0.1.x-dev",
         "php-db/phpdb-sqlite": "^0.3.x-dev",
@@ -35,7 +40,12 @@
         "phpunit/phpunit": "^13.3",
         "roave/backward-compatibility-check": "^8.21.0",
         "roave/security-advisories": "dev-master",
+        "webware/webware-console": "1.0.x-dev",
         "webware/webware-tools": "^1.0.0-beta.3"
+    },
+    "suggest": {
+        "mezzio/mezzio-session": "Required to use the database-backed session persistence",
+        "webware/webware-console": "Provides the console that runs session:init-db to create the session table"
     },
     "autoload": {
         "psr-4": {
