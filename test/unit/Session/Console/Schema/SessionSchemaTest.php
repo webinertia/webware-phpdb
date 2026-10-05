@@ -70,7 +70,7 @@ final class SessionSchemaTest extends TestCase
         self::assertInstanceOf(Literal::class, $options['engine']);
         self::assertSame('InnoDB', $options['engine']->getLiteral());
         self::assertSame('utf8mb4', $options['default charset']->getLiteral());
-        self::assertSame('utf8mb4_unicode_ci', $options['collate']->getLiteral());
+        self::assertSame('utf8mb4_0900_ai_ci', $options['collate']->getLiteral());
     }
 
     #[Test]
@@ -90,7 +90,7 @@ final class SessionSchemaTest extends TestCase
                 . '`expires_at` DATETIME NOT NULL , '
                 . 'PRIMARY KEY (`id`), '
                 . 'INDEX `idx_expires_at`(`expires_at`) '
-                . ') ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci',
+                . ') ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci',
             $sql,
         );
     }
