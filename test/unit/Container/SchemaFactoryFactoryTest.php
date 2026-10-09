@@ -20,7 +20,7 @@ final class SchemaFactoryFactoryTest extends TestCase
     #[Test]
     public function itBuildsFactoryFromConfig(): void
     {
-        $factory = (new SchemaFactoryFactory())($this->container([
+        $factory = new SchemaFactoryFactory()($this->container([
             SchemaInterface::class => [
                 'prefix'        => 'ww',
                 'separator'     => '__',
@@ -42,7 +42,7 @@ final class SchemaFactoryFactoryTest extends TestCase
     #[Test]
     public function itUsesDefaultsWhenConfigServiceAbsent(): void
     {
-        $factory = (new SchemaFactoryFactory())($this->container(null));
+        $factory = new SchemaFactoryFactory()($this->container(null));
 
         self::assertNull($factory->getPrefix());
         self::assertNull($factory->getSchema());
@@ -54,7 +54,7 @@ final class SchemaFactoryFactoryTest extends TestCase
     #[Test]
     public function itUsesDefaultsWhenSchemaConfigAbsent(): void
     {
-        $factory = (new SchemaFactoryFactory())($this->container([]));
+        $factory = new SchemaFactoryFactory()($this->container([]));
 
         self::assertNull($factory->getPrefix());
         self::assertNull($factory->getSchema());

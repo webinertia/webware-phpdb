@@ -1,2 +1,7 @@
 variant = "loose"
-issues = []
+
+[[issues]]
+file = "vendor/php-db/phpdb/src/TableGateway/Feature/AbstractFeature.php"
+code = "uninitialized-property"
+message = 'Property `$tableGateway` is not initialized in the constructor of class `PhpDb\TableGateway\Feature\EventDispatcherFeature`.'
+count = 1

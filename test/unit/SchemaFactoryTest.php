@@ -211,7 +211,7 @@ final class SchemaFactoryTest extends TestCase
     {
         $this->expectException(AssertException::class);
 
-        (new SchemaFactory())(EmptySchema::Role);
+        new SchemaFactory()(EmptySchema::Role);
     }
 
     #[Test]
@@ -219,7 +219,7 @@ final class SchemaFactoryTest extends TestCase
     {
         $this->expectException(AssertException::class);
 
-        (new SchemaFactory())(IntSchema::Role);
+        new SchemaFactory()(IntSchema::Role);
     }
 
     #[Test]

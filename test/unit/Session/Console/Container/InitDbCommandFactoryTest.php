@@ -32,7 +32,7 @@ final class InitDbCommandFactoryTest extends TestCase
                 static fn(string $id): AdapterInterface => $adapter,
             );
 
-        $command = (new InitDbCommandFactory())($container);
+        $command = new InitDbCommandFactory()($container);
 
         self::assertInstanceOf(InitDbCommand::class, $command);
 

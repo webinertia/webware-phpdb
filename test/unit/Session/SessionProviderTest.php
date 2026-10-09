@@ -56,7 +56,7 @@ final class SessionProviderTest extends TestCase
     #[Test]
     public function invokeRegistersTheInitDbCommandForConsoleDiscovery(): void
     {
-        $config = (new SessionProvider())();
+        $config = new SessionProvider()();
 
         self::assertSame(
             ['commands' => ['session:init-db' => InitDbCommand::class]],
