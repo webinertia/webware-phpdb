@@ -14,28 +14,89 @@ the library.
 ## The shadow
 
 `php-db/phpdb` maps the `PhpDb` root namespace to its `src/`. This package declares the same root
-against its own `src/`, and Composer registers each package's PSR-4 directories in dependency order —
-a package before the packages it requires — so this package's `src/` is consulted **first** for every
-`PhpDb` class:
+against its own `src/`, and Composer registers each package's PSR-4 directories in dependency order
+(a package before the packages it requires), so this package's `src/` is consulted **first** for
+every `PhpDb` class:
 
 - a class defined here **replaces** the `php-db/phpdb` class of the same name;
 - every class this package does not define still resolves to `php-db/phpdb`, unchanged.
 
-`php-db/phpdb` is therefore a hard `require` of this package — without it there is nothing to shadow.
+`php-db/phpdb` is therefore a hard `require` of this package: without it there is nothing to shadow.
 
 **One name must not be repeated.** A second `PhpDb\ConfigProvider` would be an ambiguous class
 resolution for Composer's optimized autoloader, so this package's provider is `PhpDb\WebwareProvider`.
 `php-db/phpdb`'s own provider keeps its name and both load; a consumer merging this one after it
 layers the bridge's wiring on top of PhpDb's.
 
-## Installation
+## Quickstart
+
+1. Install the package:
 
 ```bash
 composer require webware/webware-phpdb
 ```
 
-Register `PhpDb\WebwareProvider` after `PhpDb\ConfigProvider` in the consumer's config aggregator,
-so these rules win where the two overlays meet.
+2. Merge its providers in the consumer's config aggregator:
+
+```php
+use Laminas\ConfigAggregator\ConfigAggregator;
+
+$aggregator = new ConfigAggregator([
+    PhpDb\ConfigProvider::class,
+    PhpDb\WebwareProvider::class,
+    // ...
+    Mezzio\Session\ConfigProvider::class,
+    // After every provider that declares SessionPersistenceInterface:
+    // it re-points that alias at the database persistence.
+    PhpDb\Session\SessionProvider::class,
+]);
+```
+
+`PhpDb\WebwareProvider` shares no config keys with `PhpDb\ConfigProvider`, so their relative order
+does not change the merged result. `SessionProvider` is the one with an ordering requirement.
+
+3. Build table identifiers from a schema enum, so raw table names stay out of the application
+layer:
+
+```php
+use PhpDb\SchemaFactory;
+use PhpDb\SchemaInterface;
+
+enum AclSchema: string implements SchemaInterface
+{
+    public const string NAME = 'acl';
+
+    case Role = 'acl_role';
+}
+
+$factory    = $container->get(SchemaFactory::class);
+$identifier = $factory(AclSchema::Role);
+
+$identifier->getTable();  // 'acl_role' until a prefix is configured
+$identifier->getSchema(); // 'acl'
+```
+
+4. Create the session table, and let Mezzio session middleware use it:
+
+```bash
+vendor/bin/webware session:init-db
+```
+
+With `SessionProvider` merged, `Mezzio\Session\SessionPersistenceInterface` resolves to
+`PhpDb\Session\PhpDbSessionPersistence`, which reads and writes that table.
+
+## Documentation
+
+Versioned documentation lives under [`docs/`](docs/):
+
+| Document | Contents |
+|---|---|
+| [Overview](docs/v1/index.md) | The shadow, what ships, how the pieces fit |
+| [Installation](docs/v1/installation.md) | Requirements, providers, optional dependencies |
+| [Schema factory](docs/v1/schema-factory.md) | `SchemaInterface`, identifier precedence, backup identifiers |
+| [Database session persistence](docs/v1/session.md) | Persistence, handler, config keys, the session table |
+| [Table gateway event dispatcher](docs/v1/event-dispatcher.md) | The PSR-14 table gateway feature and its hooks |
+| [Development](docs/v1/development.md) | Commands, gates, baselines, tests, CI parameters |
 
 ## What ships here
 
@@ -46,7 +107,7 @@ config:
 | Path | Role |
 |---|---|
 | `mago.toml` | Extends the centre (`vendor/webware/webware-tools/mago.toml`) and overrides `php-version` only. Never re-add general rules locally. |
-| `webware-ci.json` | The required CI workflow's parameter contract — read from the repository root by `webinertia/.github`. |
+| `webware-ci.json` | The required CI workflow's parameter contract, read from the repository root by `webinertia/.github`. |
 | `phpunit.xml.dist` | PHPUnit 13 strict mode: `requireCoverageMetadata`, `failOnNotice`, `failOnWarning`, `failOnDeprecation`. |
 | `compose.yml` / `Dockerfile` / `.devcontainer/` | The containerized toolchain (Composer, PHPUnit, Mago, Infection, PHPBench, roave BC-check). |
 | `src/WebwareProvider.php` | The package wiring entry point, declared under `extra.laminas.config-provider`. Named for the collision reason in "The shadow" above. |
@@ -54,12 +115,12 @@ config:
 `mago.toml`, `phpunit.xml.dist`, `.gitattributes`, `codecov.yml`, `Dockerfile`,
 `.dockerignore`, `infection.json5.dist`, `phpbench.json.dist` and devcontainer config are
 byte-identical to the canonical artifacts in
-`webware-tools/presets/webware-alignment/artifacts/` — copy updates from there rather than
+`webware-tools/presets/webware-alignment/artifacts/`. Copy updates from there rather than
 editing them here.
 
 ## Quality gates
 
-Both MSI gates are set to **95** — the ecosystem standard, not a starting point. Lower them
+Both MSI gates are set to **95**, the ecosystem standard, not a starting point. Lower them
 only with a deliberate decision, and never silently:
 
 ```json
@@ -69,7 +130,7 @@ only with a deliberate decision, and never silently:
 
 Four Mago gates run in CI and must be clean: `format --check`, `lint`, `analyze`, `guard`.
 Run `mago fmt` first when making changes, and fix findings at source rather than adding
-`@mago-expect` — a suppression needs to be a decision, not a reflex.
+`@mago-expect`; a suppression needs to be a decision, not a reflex.
 
 ## Development
 
