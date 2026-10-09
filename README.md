@@ -62,18 +62,18 @@ layer:
 use PhpDb\SchemaFactory;
 use PhpDb\SchemaInterface;
 
-enum AclSchema: string implements SchemaInterface
+enum WebwareSchema: string implements SchemaInterface
 {
-    public const string NAME = 'acl';
+    public const string NAME = 'webware';
 
-    case Role = 'acl_role';
+    case Session = 'session';
 }
 
 $factory    = $container->get(SchemaFactory::class);
-$identifier = $factory(AclSchema::Role);
+$identifier = $factory(WebwareSchema::Session);
 
-$identifier->getTable();  // 'acl_role' until a prefix is configured
-$identifier->getSchema(); // 'acl'
+$identifier->getTable();  // 'session' until a prefix is configured
+$identifier->getSchema(); // 'webware'
 ```
 
 4. Create the session table, and let Mezzio session middleware use it:

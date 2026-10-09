@@ -81,7 +81,7 @@ final readonly class SchemaFactory
      *
      * The backup prefix is independent of the live prefix: a configured
      * `backup_prefix` replaces the live prefix entirely, so backing up
-     * `acl_role` with `backup_prefix: 'bck'` yields `bck_acl_role`.
+     * `session` with `backup_prefix: 'bck'` yields `bck_session`.
      *
      * @throws InvalidArgumentException If an override or configured value is an empty string.
      * @throws Type\Exception\AssertException If the enum value is not a non-empty string.

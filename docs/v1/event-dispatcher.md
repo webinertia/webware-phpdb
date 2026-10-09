@@ -29,7 +29,7 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 $feature = new EventDispatcherFeature(eventDispatcher: $dispatcher);
 
 $gateway = new TableGateway(
-    table   : 'acl_role',
+    table   : 'session',
     adapter : $adapter,
     features: $feature,
 );
@@ -47,7 +47,7 @@ Every hook publishes a new `PhpDb\TableGateway\Feature\EventDispatcher\TableGate
 ```php
 use PhpDb\TableGateway\Feature\EventDispatcher\TableGatewayEvent;
 
-final class RoleChangeLogger
+final class SessionWriteLogger
 {
     public function __invoke(TableGatewayEvent $event): void
     {
