@@ -279,7 +279,7 @@ final class PhpDbSessionPersistenceTest extends MysqlSessionTestCase
         $container->setService('config', ['session' => $config]);
         $container->setService(AdapterInterface::class, $this->adapter);
 
-        return (new PhpDbSessionPersistenceFactory())($container);
+        return new PhpDbSessionPersistenceFactory()($container);
     }
 
     private function requestWithCookie(string $value, string $name = 'PHPSESSID'): ServerRequestInterface

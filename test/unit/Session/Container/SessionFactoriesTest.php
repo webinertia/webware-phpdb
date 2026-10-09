@@ -28,7 +28,7 @@ final class SessionFactoriesTest extends TestCase
     {
         self::assertInstanceOf(
             DbSessionHandler::class,
-            (new DbSessionHandlerFactory())($this->container(services: [])),
+            new DbSessionHandlerFactory()($this->container(services: [])),
         );
     }
 
@@ -37,7 +37,7 @@ final class SessionFactoriesTest extends TestCase
     {
         self::assertInstanceOf(
             PhpDbSessionPersistence::class,
-            (new PhpDbSessionPersistenceFactory())($this->container(services: [
+            new PhpDbSessionPersistenceFactory()($this->container(services: [
                 'config' => ['session' => ['name' => 'WEBWARE']],
             ])),
         );
@@ -48,7 +48,7 @@ final class SessionFactoriesTest extends TestCase
     {
         self::assertInstanceOf(
             PhpDbSessionPersistence::class,
-            (new PhpDbSessionPersistenceFactory())($this->container(services: [])),
+            new PhpDbSessionPersistenceFactory()($this->container(services: [])),
         );
     }
 

@@ -41,11 +41,13 @@
         "roave/backward-compatibility-check": "^8.21.0",
         "roave/security-advisories": "dev-master",
         "webware/webware-console": "1.0.x-dev",
+        "webware/webware-event": "1.0.0-alpha.3",
         "webware/webware-tools": "^1.0.0-beta.3"
     },
     "suggest": {
         "mezzio/mezzio-session": "Required to use the database-backed session persistence",
-        "webware/webware-console": "Provides the console that runs session:init-db to create the session table"
+        "webware/webware-console": "Provides the console that runs session:init-db to create the session table",
+        "webware/webware-event": "Required to use the PSR-14 table gateway event dispatcher feature (PhpDb\\TableGateway\\Feature\\EventDispatcherFeature)"
     },
     "autoload": {
         "psr-4": {

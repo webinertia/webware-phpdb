@@ -6,7 +6,7 @@ namespace WebwareTestIntegration\PhpDb;
 
 use PhpDb\SchemaInterface;
 
-enum TestSchema: string implements SchemaInterface
+enum IntegrationSchema: string implements SchemaInterface
 {
-    case Roles = 'core_role';
+    case Session = 'session';
 }

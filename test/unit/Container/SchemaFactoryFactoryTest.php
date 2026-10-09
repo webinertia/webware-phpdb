@@ -20,13 +20,13 @@ final class SchemaFactoryFactoryTest extends TestCase
     #[Test]
     public function itBuildsFactoryFromConfig(): void
     {
-        $factory = (new SchemaFactoryFactory())($this->container([
+        $factory = new SchemaFactoryFactory()($this->container([
             SchemaInterface::class => [
                 'prefix'        => 'ww',
                 'separator'     => '__',
                 'schema'        => 'public',
-                'prefixes'      => ['acl_role' => 'acl'],
-                'schemas'       => ['acl_role' => 'tenant'],
+                'prefixes'      => ['session' => 'sess'],
+                'schemas'       => ['session' => 'tenant'],
                 'backup_prefix' => 'bck',
                 'backup_schema' => 'backup',
             ],
@@ -42,7 +42,7 @@ final class SchemaFactoryFactoryTest extends TestCase
     #[Test]
     public function itUsesDefaultsWhenConfigServiceAbsent(): void
     {
-        $factory = (new SchemaFactoryFactory())($this->container(null));
+        $factory = new SchemaFactoryFactory()($this->container(null));
 
         self::assertNull($factory->getPrefix());
         self::assertNull($factory->getSchema());
@@ -54,7 +54,7 @@ final class SchemaFactoryFactoryTest extends TestCase
     #[Test]
     public function itUsesDefaultsWhenSchemaConfigAbsent(): void
     {
-        $factory = (new SchemaFactoryFactory())($this->container([]));
+        $factory = new SchemaFactoryFactory()($this->container([]));
 
         self::assertNull($factory->getPrefix());
         self::assertNull($factory->getSchema());

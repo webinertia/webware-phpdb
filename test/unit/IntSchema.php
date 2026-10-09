@@ -8,5 +8,5 @@ use PhpDb\SchemaInterface;
 
 enum IntSchema: int implements SchemaInterface
 {
-    case Role = 1;
+    case Session = 1;
 }

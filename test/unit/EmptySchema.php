@@ -8,5 +8,5 @@ use PhpDb\SchemaInterface;
 
 enum EmptySchema: string implements SchemaInterface
 {
-    case Role = '';
+    case Session = '';
 }

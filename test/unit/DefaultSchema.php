@@ -6,7 +6,7 @@ namespace WebwareTest\PhpDb;
 
 use PhpDb\SchemaInterface;
 
-enum AclSchema: string implements SchemaInterface
+enum DefaultSchema: string implements SchemaInterface
 {
-    case Role = 'acl_role';
+    case Session = 'session';
 }

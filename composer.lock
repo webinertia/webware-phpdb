@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3afa1b2e48ac9cd3b248b58581797af2",
+    "content-hash": "234725b71f523678eb013774f409da88",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -2589,6 +2589,67 @@
                 "source": "https://github.com/phar-io/version/tree/3.2.1"
             },
             "time": "2022-02-21T01:04:05+00:00"
+        },
+        {
+            "name": "phly/phly-event-dispatcher",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phly/phly-event-dispatcher.git",
+                "reference": "09b86c00d16e34b5d33123191cb613307ff54be7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phly/phly-event-dispatcher/zipball/09b86c00d16e34b5d33123191cb613307ff54be7",
+                "reference": "09b86c00d16e34b5d33123191cb613307ff54be7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+                "psr/container": "^1.0 || ^2.0",
+                "psr/event-dispatcher": "^1.0"
+            },
+            "conflict": {
+                "phpspec/prophecy": "<1.7.5"
+            },
+            "provide": {
+                "psr/event-dispatcher-implementation": "^1.0"
+            },
+            "require-dev": {
+                "fig/event-dispatcher-util": "^1.0",
+                "laminas/laminas-coding-standard": "~2.3.0",
+                "phpunit/phpunit": "^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laminas": {
+                    "config-provider": "Phly\\EventDispatcher\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions/lazy_listener.php"
+                ],
+                "psr-4": {
+                    "Phly\\EventDispatcher\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Experimental event dispatcher for PSR-14",
+            "keywords": [
+                "components",
+                "event-dispatcher",
+                "psr-14"
+            ],
+            "support": {
+                "issues": "https://github.com/phly/phly-event-dispatcher/issues",
+                "rss": "https://github.com/phly/phly-event-dispatcher/releases.atom",
+                "source": "https://github.com/phly/phly-event-dispatcher"
+            },
+            "time": "2026-09-09T16:22:59+00:00"
         },
         {
             "name": "php-db/phpdb-mysql",
@@ -5574,6 +5635,56 @@
                 "source": "https://github.com/php-fig/clock/tree/1.0.0"
             },
             "time": "2022-11-25T14:36:26+00:00"
+        },
+        {
+            "name": "psr/event-dispatcher",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/event-dispatcher.git",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/event-dispatcher/zipball/dbefd12671e8a14ec7f180cab83036ed26714bb0",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\EventDispatcher\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Standard interfaces for event handling.",
+            "keywords": [
+                "events",
+                "psr",
+                "psr-14"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/event-dispatcher/issues",
+                "source": "https://github.com/php-fig/event-dispatcher/tree/1.0.0"
+            },
+            "time": "2019-01-08T18:20:26+00:00"
         },
         {
             "name": "psr/http-factory",
@@ -10688,17 +10799,77 @@
             "time": "2026-09-29T05:26:25+00:00"
         },
         {
-            "name": "webware/webware-tools",
-            "version": "1.0.0-beta.9",
+            "name": "webware/webware-event",
+            "version": "1.0.0-alpha.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webinertia/webware-tools.git",
-                "reference": "bec8ccaa8ca17896d2ee22b3a7067e53c33b79e2"
+                "url": "https://github.com/webinertia/webware-event.git",
+                "reference": "44b8bf4dcb3cd405164bc9531767c3f28fc07f39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webinertia/webware-tools/zipball/bec8ccaa8ca17896d2ee22b3a7067e53c33b79e2",
-                "reference": "bec8ccaa8ca17896d2ee22b3a7067e53c33b79e2",
+                "url": "https://api.github.com/repos/webinertia/webware-event/zipball/44b8bf4dcb3cd405164bc9531767c3f28fc07f39",
+                "reference": "44b8bf4dcb3cd405164bc9531767c3f28fc07f39",
+                "shasum": ""
+            },
+            "require": {
+                "phly/phly-event-dispatcher": "^1.5.0",
+                "php": "~8.4.1 || ~8.5.0",
+                "psr/http-message": "^2.0",
+                "psr/http-server-handler": "^1.0",
+                "psr/http-server-middleware": "^1.0"
+            },
+            "require-dev": {
+                "infection/infection": "^0.35.0",
+                "laminas/laminas-servicemanager": "^4.5",
+                "phpbench/phpbench": "^1.7",
+                "phpunit/phpunit": "^13.3.0",
+                "roave/backward-compatibility-check": "^8.21.0",
+                "roave/security-advisories": "dev-master",
+                "webware/webware-tools": "^1.0.0-beta.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Webware\\Event\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Joey Smith",
+                    "email": "jsmith@webinertia.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Event system for Webware",
+            "keywords": [
+                "dispatcher",
+                "event",
+                "psr-14",
+                "webware"
+            ],
+            "support": {
+                "issues": "https://github.com/webinertia/webware-event/issues",
+                "source": "https://github.com/webinertia/webware-event/tree/1.0.0-alpha.3"
+            },
+            "time": "2026-09-29T05:32:32+00:00"
+        },
+        {
+            "name": "webware/webware-tools",
+            "version": "1.0.0-rc.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webinertia/webware-tools.git",
+                "reference": "5f6927e02fab45a591e19233a75745700247b51c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webinertia/webware-tools/zipball/5f6927e02fab45a591e19233a75745700247b51c",
+                "reference": "5f6927e02fab45a591e19233a75745700247b51c",
                 "shasum": ""
             },
             "require": {
@@ -10727,9 +10898,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webinertia/webware-tools/issues",
-                "source": "https://github.com/webinertia/webware-tools/tree/1.0.0-beta.9"
+                "source": "https://github.com/webinertia/webware-tools/tree/1.0.0-rc.2"
             },
-            "time": "2026-10-03T14:52:08+00:00"
+            "time": "2026-10-09T01:57:15+00:00"
         }
     ],
     "aliases": [],
