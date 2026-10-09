@@ -67,7 +67,7 @@ final class SchemaFactoryIntegrationTest extends TestCase
             schemaFactory: $schemaFactory,
             adapter      : $adapter,
             schema       : 'webware',
-            catalogSql   : "SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'webware' AND TABLE_NAME = 'ww_core_role'",
+            catalogSql   : "SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'webware' AND TABLE_NAME = 'ww_session'",
         );
     }
 
@@ -105,7 +105,7 @@ final class SchemaFactoryIntegrationTest extends TestCase
             schemaFactory: $schemaFactory,
             adapter      : $adapter,
             schema       : 'public',
-            catalogSql   : "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'ww_core_role'",
+            catalogSql   : "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'ww_session'",
         );
     }
 
@@ -138,7 +138,7 @@ final class SchemaFactoryIntegrationTest extends TestCase
             schemaFactory: $schemaFactory,
             adapter      : $adapter,
             schema       : null,
-            catalogSql   : "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'ww_core_role'",
+            catalogSql   : "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'ww_session'",
         );
     }
 
@@ -148,9 +148,9 @@ final class SchemaFactoryIntegrationTest extends TestCase
         ?string $schema,
         string $catalogSql,
     ): void {
-        $identifier = $schemaFactory(TestSchema::Roles);
+        $identifier = $schemaFactory(IntegrationSchema::Session);
 
-        self::assertSame('ww_core_role', $identifier->getTable());
+        self::assertSame('ww_session', $identifier->getTable());
         self::assertSame($schema, $identifier->getSchema());
 
         $createTable = new CreateTable(table: $identifier);

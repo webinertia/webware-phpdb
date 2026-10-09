@@ -32,9 +32,9 @@ final class SchemaFactoryTest extends TestCase
             'backup_prefix' => 'bck',
             'backup_schema' => 'backup',
         ]);
-        $identifier = $factory->backup(AclSchema::Role);
+        $identifier = $factory->backup(DefaultSchema::Session);
 
-        self::assertSame('bck_acl_role', $identifier->getTable());
+        self::assertSame('bck_session', $identifier->getTable());
         self::assertSame('backup', $identifier->getSchema());
     }
 
@@ -45,7 +45,7 @@ final class SchemaFactoryTest extends TestCase
             'schema'        => 'public',
             'backup_prefix' => 'bck',
         ]);
-        $identifier = $factory->backup(AclSchema::Role);
+        $identifier = $factory->backup(DefaultSchema::Session);
 
         self::assertSame('public', $identifier->getSchema());
     }
@@ -55,21 +55,21 @@ final class SchemaFactoryTest extends TestCase
     {
         $factory = new SchemaFactory([
             'prefix'        => 'ww',
-            'prefixes'      => ['acl_role' => 'acl'],
+            'prefixes'      => ['session' => 'sess'],
             'backup_prefix' => 'bck',
         ]);
-        $identifier = $factory->backup(AclSchema::Role);
+        $identifier = $factory->backup(DefaultSchema::Session);
 
-        self::assertSame('bck_acl_role', $identifier->getTable());
+        self::assertSame('bck_session', $identifier->getTable());
     }
 
     #[Test]
     public function backupPrefersCallTimePrefixOverBackupPrefix(): void
     {
         $factory    = new SchemaFactory(['backup_prefix' => 'bck']);
-        $identifier = $factory->backup(AclSchema::Role, prefix: 'tmp');
+        $identifier = $factory->backup(DefaultSchema::Session, prefix: 'tmp');
 
-        self::assertSame('tmp_acl_role', $identifier->getTable());
+        self::assertSame('tmp_session', $identifier->getTable());
     }
 
     #[Test]
@@ -77,9 +77,9 @@ final class SchemaFactoryTest extends TestCase
     {
         $factory = new SchemaFactory([
             'backup_prefix' => 'bck',
-            'schemas'       => ['acl_role' => 'tenant'],
+            'schemas'       => ['session' => 'tenant'],
         ]);
-        $identifier = $factory->backup(AclSchema::Role, schemaName: 'archive');
+        $identifier = $factory->backup(DefaultSchema::Session, schemaName: 'archive');
 
         self::assertSame('archive', $identifier->getSchema());
     }
@@ -91,9 +91,9 @@ final class SchemaFactoryTest extends TestCase
             'backup_prefix' => 'bck',
             'separator'     => '__',
         ]);
-        $identifier = $factory->backup(AclSchema::Role, separator: '--');
+        $identifier = $factory->backup(DefaultSchema::Session, separator: '--');
 
-        self::assertSame('bck--acl_role', $identifier->getTable());
+        self::assertSame('bck--session', $identifier->getTable());
     }
 
     #[Test]
@@ -102,9 +102,9 @@ final class SchemaFactoryTest extends TestCase
         $factory = new SchemaFactory([
             'backup_prefix' => 'bck',
             'backup_schema' => 'backup',
-            'schemas'       => ['acl_role' => 'tenant'],
+            'schemas'       => ['session' => 'tenant'],
         ]);
-        $identifier = $factory->backup(AclSchema::Role);
+        $identifier = $factory->backup(DefaultSchema::Session);
 
         self::assertSame('tenant', $identifier->getSchema());
     }
@@ -116,7 +116,7 @@ final class SchemaFactoryTest extends TestCase
             'backup_prefix' => 'bck',
             'backup_schema' => 'backup',
         ]);
-        $identifier = $factory->backup(AclSchema::Role, schemaName: 'archive');
+        $identifier = $factory->backup(DefaultSchema::Session, schemaName: 'archive');
 
         self::assertSame('archive', $identifier->getSchema());
     }
@@ -128,21 +128,21 @@ final class SchemaFactoryTest extends TestCase
             'prefix' => 'ww',
             'schema' => 'public',
         ]);
-        $identifier = $factory(AclSchema::Role, schemaName: 'backup', prefix: 'tmp');
+        $identifier = $factory(DefaultSchema::Session, schemaName: 'backup', prefix: 'tmp');
 
         self::assertSame('backup', $identifier->getSchema());
         self::assertSame('tmp', $identifier->getPrefix());
-        self::assertSame('tmp_acl_role', $identifier->getTable());
+        self::assertSame('tmp_session', $identifier->getTable());
     }
 
     #[Test]
     public function itAppliesConfiguredPrefix(): void
     {
         $factory    = new SchemaFactory(['prefix' => 'ww']);
-        $identifier = $factory(AclSchema::Role);
+        $identifier = $factory(DefaultSchema::Session);
 
-        self::assertSame('ww_acl_role', $identifier->getTable());
-        self::assertSame('acl_role', $identifier->getUnprefixedTable());
+        self::assertSame('ww_session', $identifier->getTable());
+        self::assertSame('session', $identifier->getUnprefixedTable());
         self::assertSame('ww', $identifier->getPrefix());
         self::assertNull($identifier->getSchema());
     }
@@ -178,11 +178,11 @@ final class SchemaFactoryTest extends TestCase
     {
         $factory = new SchemaFactory([
             'prefix'   => 'ww',
-            'prefixes' => ['acl_role' => 'acl'],
+            'prefixes' => ['session' => 'sess'],
         ]);
-        $identifier = $factory(AclSchema::Role);
+        $identifier = $factory(DefaultSchema::Session);
 
-        self::assertSame('acl_acl_role', $identifier->getTable());
+        self::assertSame('sess_session', $identifier->getTable());
     }
 
     #[Test]
@@ -190,9 +190,9 @@ final class SchemaFactoryTest extends TestCase
     {
         $factory = new SchemaFactory([
             'schema'  => 'public',
-            'schemas' => ['acl_role' => 'tenant'],
+            'schemas' => ['session' => 'tenant'],
         ]);
-        $identifier = $factory(AclSchema::Role);
+        $identifier = $factory(DefaultSchema::Session);
 
         self::assertSame('tenant', $identifier->getSchema());
     }
@@ -201,9 +201,9 @@ final class SchemaFactoryTest extends TestCase
     public function itPreservesSchemaFromEnumConstant(): void
     {
         $factory    = new SchemaFactory(['prefix' => 'ww']);
-        $identifier = $factory(PublicSchema::Role);
+        $identifier = $factory(WebwareSchema::Session);
 
-        self::assertSame('public', $identifier->getSchema());
+        self::assertSame('webware', $identifier->getSchema());
     }
 
     #[Test]
@@ -211,7 +211,7 @@ final class SchemaFactoryTest extends TestCase
     {
         $this->expectException(AssertException::class);
 
-        new SchemaFactory()(EmptySchema::Role);
+        new SchemaFactory()(EmptySchema::Session);
     }
 
     #[Test]
@@ -219,7 +219,7 @@ final class SchemaFactoryTest extends TestCase
     {
         $this->expectException(AssertException::class);
 
-        new SchemaFactory()(IntSchema::Role);
+        new SchemaFactory()(IntSchema::Session);
     }
 
     #[Test]
@@ -277,8 +277,8 @@ final class SchemaFactoryTest extends TestCase
             'prefix'    => 'ww',
             'separator' => '__',
         ]);
-        $identifier = $factory(AclSchema::Role);
+        $identifier = $factory(DefaultSchema::Session);
 
-        self::assertSame('ww__acl_role', $identifier->getTable());
+        self::assertSame('ww__session', $identifier->getTable());
     }
 }
