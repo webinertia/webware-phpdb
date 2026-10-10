@@ -42,7 +42,7 @@
         "roave/security-advisories": "dev-master",
         "webware/webware-console": "1.0.x-dev",
         "webware/webware-event": "1.0.0-alpha.3",
-        "webware/webware-tools": "^1.0.0-beta.3"
+        "webware/webware-tools": "^1.0.0-rc.5"
     },
     "suggest": {
         "mezzio/mezzio-session": "Required to use the database-backed session persistence",
