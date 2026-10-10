@@ -135,7 +135,7 @@ final class PhpDbSessionPersistence implements InitializePersistenceIdInterface,
         $row = $this->sql->prepareStatementForSqlObject($select)->execute()?->current();
 
         if (! is_array($row)) {
-            // Session not found or expired — return empty session keeping same ID.
+            // Session not found or expired - return empty session keeping same ID.
             // Browser already holds the cookie; on write it will upsert.
             return new Session([], $id);
         }
@@ -150,7 +150,7 @@ final class PhpDbSessionPersistence implements InitializePersistenceIdInterface,
     #[Override]
     public function persistSession(SessionInterface $session, ResponseInterface $response): ResponseInterface
     {
-        // Retrieve the session ID — uses SessionIdentifierAwareInterface (1.x);
+        // Retrieve the session ID - uses SessionIdentifierAwareInterface (1.x);
         // getId() moves to SessionInterface in 2.0.
         $id = $this->idOf($session);
 

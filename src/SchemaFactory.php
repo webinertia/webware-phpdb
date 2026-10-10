@@ -18,8 +18,8 @@ use Psl\Type;
  * The factory is schema-driven: the {@see SchemaInterface} enum supplies the
  * unprefixed table name (its backing value) and, through the
  * {@see SchemaInterface::NAME} constant, the enum-wide schema identifier.
- * Configuration — supplied under the `SchemaInterface::class` top-level config
- * key — layers app-wide defaults and per-table overrides on top of it.
+ * Configuration - supplied under the `SchemaInterface::class` top-level config
+ * key - layers app-wide defaults and per-table overrides on top of it.
  *
  * Live identifier precedence, highest first:
  *
