@@ -7,7 +7,7 @@ the library.
 [![PHP Version](https://img.shields.io/packagist/php-v/webware/webware-phpdb)](https://packagist.org/packages/webware/webware-phpdb)
 [![Latest Version](https://img.shields.io/packagist/v/webware/webware-phpdb)](https://packagist.org/packages/webware/webware-phpdb)
 [![License](https://img.shields.io/github/license/webinertia/webware-phpdb)](LICENSE)
-[![Required CI](https://github.com/webinertia/webware-phpdb/actions/workflows/required/webinertia/.github/.github/workflows/continuous-integration.yml/badge.svg)](https://github.com/webinertia/webware-phpdb/actions/workflows/required/webinertia/.github/.github/workflows/continuous-integration.yml)
+[![Continuous Integration](https://github.com/webinertia/webware-phpdb/actions/workflows/required/webinertia/.github/.github/workflows/continuous-integration.yml/badge.svg)](https://github.com/webinertia/webware-phpdb/actions/workflows/required/webinertia/.github/.github/workflows/continuous-integration.yml)
 [![codecov](https://codecov.io/gh/webinertia/webware-phpdb/graph/badge.svg)](https://codecov.io/gh/webinertia/webware-phpdb)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fwebinertia%2Fwebware-phpdb%2F1.0.x)](https://dashboard.stryker-mutator.io/reports/github.com/webinertia/webware-phpdb/1.0.x)
 
