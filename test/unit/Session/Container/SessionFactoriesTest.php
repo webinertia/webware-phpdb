@@ -60,11 +60,13 @@ final class SessionFactoriesTest extends TestCase
         $services[AdapterInterface::class] = $this->createStub(AdapterInterface::class);
 
         $container = $this->createStub(ContainerInterface::class);
-        $container->method('has')
+        $container
+            ->method('has')
             ->willReturnCallback(
                 static fn(string $id): bool => array_key_exists($id, $services),
             );
-        $container->method('get')
+        $container
+            ->method('get')
             ->willReturnCallback(
                 static fn(string $id): mixed => $services[$id],
             );

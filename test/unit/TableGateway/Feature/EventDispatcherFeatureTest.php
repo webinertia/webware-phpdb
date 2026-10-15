@@ -146,7 +146,8 @@ final class EventDispatcherFeatureTest extends TestCase
     private function feature(AbstractTableGateway $gateway): EventDispatcherFeature
     {
         $dispatcher = $this->createStub(EventDispatcherInterface::class);
-        $dispatcher->method('dispatch')
+        $dispatcher
+            ->method('dispatch')
             ->willReturnCallback(
                 function (object $event): object {
                     if ($event instanceof TableGatewayEvent) {

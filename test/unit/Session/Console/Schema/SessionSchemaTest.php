@@ -63,7 +63,8 @@ final class SessionSchemaTest extends TestCase
     #[Test]
     public function sessionTableOptionsSetEngineCharsetAndCollation(): void
     {
-        $options = new SessionSchema()->sessionTable('session')
+        $options = new SessionSchema()
+            ->sessionTable('session')
             ->getOptions();
 
         self::assertSame(['engine', 'default charset', 'collate'], array_keys($options));
