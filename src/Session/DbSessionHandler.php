@@ -88,7 +88,8 @@ final class DbSessionHandler implements SessionHandlerInterface
     #[Override]
     public function read(string $id): string|false
     {
-        $select = $this->sql->select()
+        $select = $this->sql
+            ->select()
             ->columns(['payload'])
             ->where(['id' => $id]);
         $select->where->greaterThan('expires_at', date(format: self::TIMESTAMP_FORMAT));
@@ -112,14 +113,15 @@ final class DbSessionHandler implements SessionHandlerInterface
         );
         $now = date(format: self::TIMESTAMP_FORMAT);
 
-        $this->sql->prepareStatementForSqlObject(
-            new Insert(table: SessionTable::Session->value)->values([
-                'id'          => $id,
-                'payload'     => $data,
-                'expires_at'  => $expiresAt,
-                'modified_at' => $now,
-            ]),
-        )
+        $this->sql
+            ->prepareStatementForSqlObject(
+                new Insert(table: SessionTable::Session->value)->values([
+                    'id'          => $id,
+                    'payload'     => $data,
+                    'expires_at'  => $expiresAt,
+                    'modified_at' => $now,
+                ]),
+            )
             ->execute();
 
         return true;

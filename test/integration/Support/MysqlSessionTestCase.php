@@ -51,9 +51,10 @@ class MysqlSessionTestCase extends TestCase
 
     protected function insertRow(string $id, string $payload, string $expiresAt): void
     {
-        $this->pdo->prepare(
-            query: 'INSERT INTO `session` (id, payload, modified_at, expires_at) VALUES (?, ?, NOW(), ?)',
-        )
+        $this->pdo
+            ->prepare(
+                query: 'INSERT INTO `session` (id, payload, modified_at, expires_at) VALUES (?, ?, NOW(), ?)',
+            )
             ->execute([$id, $payload, $expiresAt]);
     }
 

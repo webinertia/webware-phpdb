@@ -127,7 +127,8 @@ final class PhpDbSessionPersistence implements InitializePersistenceIdInterface,
             return new Session([], '');
         }
 
-        $select = $this->sql->select()
+        $select = $this->sql
+            ->select()
             ->columns(['payload'])
             ->where(['id' => $id]);
         $select->where->greaterThan('expires_at', date(format: self::TIMESTAMP_FORMAT));
@@ -185,14 +186,15 @@ final class PhpDbSessionPersistence implements InitializePersistenceIdInterface,
         $now     = date(format: self::TIMESTAMP_FORMAT);
         $payload = SessionPayload::encode(data: $session->toArray());
 
-        $this->sql->prepareStatementForSqlObject(
-            new Insert(table: SessionTable::Session->value)->values([
-                'id'          => $id,
-                'payload'     => $payload,
-                'expires_at'  => $expiresAt,
-                'modified_at' => $now,
-            ]),
-        )
+        $this->sql
+            ->prepareStatementForSqlObject(
+                new Insert(table: SessionTable::Session->value)->values([
+                    'id'          => $id,
+                    'payload'     => $payload,
+                    'expires_at'  => $expiresAt,
+                    'modified_at' => $now,
+                ]),
+            )
             ->execute();
 
         $response = $this->addSessionCookieHeaderToResponse($response, $id, $session);
