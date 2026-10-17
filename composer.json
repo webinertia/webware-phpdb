@@ -1,6 +1,6 @@
 {
     "name": "webware/webware-phpdb",
-    "description": "PhpDb bridge for the Webware stack: shadows the PhpDb root namespace so packages can replace individual php-db/phpdb classes.",
+    "description": "PhpDb bridge for the Webware stack.",
     "license": "BSD-3-Clause",
     "keywords": [
         "webware",
