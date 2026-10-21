@@ -9,25 +9,30 @@ use PhpDb\Pgsql;
 use WebwareTestIntegration\PhpDb\Support\AdapterFactory;
 
 use function getenv;
-use function sprintf;
 
+/**
+ * Resets the pgsql schema between integration tests.
+ *
+ * Each test creates and drops its own table, so the database only has to
+ * exist and be reachable. Dropping and recreating the whole database is not
+ * needed, and an ordinary role cannot do it: DROP DATABASE cannot run while
+ * connected to the target, WITH (FORCE) needs pg_signal_backend to terminate
+ * other backends, and CREATE DATABASE needs CREATEDB. Requiring any of that
+ * would force the suite to run as a superuser, which is exactly what the
+ * connection settings exist to avoid.
+ *
+ * Recreating the public schema is equivalent here and needs only ownership.
+ */
 final class PgsqlFixtureLoader implements FixtureLoaderInterface
 {
     public function createDatabase(): void
     {
-        $database = (string) getenv(name: 'TESTS_PHPDB_ADAPTER_PGSQL_DATABASE');
-        $adapter  = $this->adapter();
-
-        $adapter->executeQuery(sql: sprintf('DROP DATABASE IF EXISTS "%s" WITH (FORCE)', $database));
-        $adapter->executeQuery(sql: sprintf('CREATE DATABASE "%s"', $database));
+        $this->resetSchema();
     }
 
     public function dropDatabase(): void
     {
-        $database = (string) getenv(name: 'TESTS_PHPDB_ADAPTER_PGSQL_DATABASE');
-        $adapter  = $this->adapter();
-
-        $adapter->executeQuery(sql: sprintf('DROP DATABASE IF EXISTS "%s" WITH (FORCE)', $database));
+        $this->resetSchema();
     }
 
     private function adapter(): AdapterInterface
@@ -38,12 +43,20 @@ final class PgsqlFixtureLoader implements FixtureLoaderInterface
                 'connection' => [
                     'hostname' => (string) getenv(name: 'TESTS_PHPDB_ADAPTER_PGSQL_HOSTNAME'),
                     'port'     => (string) getenv(name: 'TESTS_PHPDB_ADAPTER_PGSQL_PORT'),
-                    'dbname'   => 'postgres',
+                    'dbname'   => (string) getenv(name: 'TESTS_PHPDB_ADAPTER_PGSQL_DATABASE'),
                     'username' => (string) getenv(name: 'TESTS_PHPDB_ADAPTER_PGSQL_USERNAME'),
                     'password' => (string) getenv(name: 'TESTS_PHPDB_ADAPTER_PGSQL_PASSWORD'),
                 ],
             ],
             driverDependencies: new Pgsql\ConfigProvider()->getDependencies(),
         );
+    }
+
+    private function resetSchema(): void
+    {
+        $adapter = $this->adapter();
+
+        $adapter->executeQuery(sql: 'DROP SCHEMA IF EXISTS public CASCADE');
+        $adapter->executeQuery(sql: 'CREATE SCHEMA public');
     }
 }
