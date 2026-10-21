@@ -89,7 +89,8 @@ final class DbSessionHandler implements
      * @throws SqlInvalidArgumentException
      */
     #[Override]
-    public function gc(int $maxLifetime): int|false
+    // @mago-expect lint:variable-name -- max_lifetime is mandated by SessionHandlerInterface::gc().
+    public function gc(int $max_lifetime): int|false
     {
         $cutoff = date(format: self::TIMESTAMP_FORMAT);
 
