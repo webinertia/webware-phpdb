@@ -8,7 +8,9 @@
   "db_env_json": {
     "MYSQL_ROOT_HOST": "%",
     "MYSQL_ALLOW_EMPTY_PASSWORD": "true",
-    "MYSQL_DATABASE": "webware"
+    "MYSQL_DATABASE": "webware",
+    "MYSQL_USER": "webware",
+    "MYSQL_PASSWORD": "webware"
   },
   "db_port": 3306,
   "db_health_cmd": "mysqladmin ping -h127.0.0.1 --silent",
