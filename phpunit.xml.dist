@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/13.1/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          colors="true"
          cacheDirectory=".phpunit.cache"
@@ -25,18 +25,18 @@
         <env name="TESTS_PHPDB_ADAPTER_MYSQL_HOSTNAME" value="127.0.0.1"/>
         <env name="TESTS_PHPDB_ADAPTER_MYSQL_PORT" value="3306"/>
         <env name="TESTS_PHPDB_ADAPTER_MYSQL_DATABASE" value="webware"/>
-        <env name="TESTS_PHPDB_ADAPTER_MYSQL_USERNAME" value="root"/>
-        <env name="TESTS_PHPDB_ADAPTER_MYSQL_PASSWORD" value=""/>
+        <env name="TESTS_PHPDB_ADAPTER_MYSQL_USERNAME" value="webware"/>
+        <env name="TESTS_PHPDB_ADAPTER_MYSQL_PASSWORD" value="webware"/>
 
         <env name="TESTS_PHPDB_ADAPTER_PGSQL" value="true"/>
-        <env name="TESTS_PHPDB_ADAPTER_PGSQL_HOSTNAME" value="pgsql"/>
+        <env name="TESTS_PHPDB_ADAPTER_PGSQL_HOSTNAME" value="127.0.0.1"/>
         <env name="TESTS_PHPDB_ADAPTER_PGSQL_PORT" value="5432"/>
         <env name="TESTS_PHPDB_ADAPTER_PGSQL_DATABASE" value="webware"/>
-        <env name="TESTS_PHPDB_ADAPTER_PGSQL_USERNAME" value="postgres"/>
-        <env name="TESTS_PHPDB_ADAPTER_PGSQL_PASSWORD" value="postgres"/>
+        <env name="TESTS_PHPDB_ADAPTER_PGSQL_USERNAME" value="webware"/>
+        <env name="TESTS_PHPDB_ADAPTER_PGSQL_PASSWORD" value="webware"/>
 
         <env name="TESTS_PHPDB_ADAPTER_SQLITE" value="true"/>
-        <env name="TESTS_PHPDB_ADAPTER_SQLITE_DSN" value="sqlite:/tmp/webware-phpdb.sqlite"/>
+        <env name="TESTS_PHPDB_ADAPTER_SQLITE_DSN" value="sqlite::TMP:/webware-phpdb.sqlite"/>
     </php>
     <source restrictNotices="true" ignoreIndirectDeprecations="true">
         <include>

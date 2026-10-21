@@ -123,7 +123,7 @@ final class SchemaFactoryIntegrationTest extends TestCase
                 AdapterInterface::class => [
                     'driver'     => Sqlite\Pdo\Driver::class,
                     'connection' => [
-                        'dsn' => (string) getenv(name: 'TESTS_PHPDB_ADAPTER_SQLITE_DSN'),
+                        'dsn' => SqliteDsn::resolve(),
                     ],
                 ],
                 SchemaInterface::class  => [

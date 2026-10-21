@@ -19,15 +19,30 @@ use PhpDb\Adapter\AdapterInterface;
 use PhpDb\Session\Sql\Insert;
 use PhpDb\Sql\Exception\InvalidArgumentException as SqlInvalidArgumentException;
 use PhpDb\Sql\Sql;
+use Random\RandomException;
 use SessionHandlerInterface;
+use SessionIdInterface;
+use SessionUpdateTimestampHandlerInterface;
 
+use function bin2hex;
 use function date;
 use function ini_get;
 use function is_array;
 use function is_string;
+use function random_bytes;
 use function time;
 
-final class DbSessionHandler implements SessionHandlerInterface
+/**
+ * Session handler backed by the session table.
+ *
+ * Both auxiliary session interfaces are implemented because PHP 8.6 warns
+ * when a SessionHandlerInterface implementation omits create_sid() and
+ * validateId(), which SessionHandlerInterface itself declares from PHP 9.0.
+ */
+final class DbSessionHandler implements
+    SessionHandlerInterface,
+    SessionIdInterface,
+    SessionUpdateTimestampHandlerInterface
 {
     private const string TIMESTAMP_FORMAT = 'Y-m-d H:i:s';
 
@@ -48,6 +63,16 @@ final class DbSessionHandler implements SessionHandlerInterface
     }
 
     /**
+     * @throws RandomException
+     */
+    // @mago-expect lint:method-name -- create_sid is mandated by SessionIdInterface.
+    #[Override]
+    public function create_sid(): string
+    {
+        return bin2hex(random_bytes(16));
+    }
+
+    /**
      * @throws SqlInvalidArgumentException
      */
     #[Override]
@@ -64,7 +89,8 @@ final class DbSessionHandler implements SessionHandlerInterface
      * @throws SqlInvalidArgumentException
      */
     #[Override]
-    public function gc(int $maxLifetime): int|false
+    // @mago-expect lint:variable-name -- max_lifetime is mandated by SessionHandlerInterface::gc().
+    public function gc(int $max_lifetime): int|false
     {
         $cutoff = date(format: self::TIMESTAMP_FORMAT);
 
@@ -98,6 +124,27 @@ final class DbSessionHandler implements SessionHandlerInterface
         $payload = is_array($row) ? $row['payload'] ?? false : false;
 
         return is_string($payload) ? $payload : false;
+    }
+
+    /**
+     * @throws SqlInvalidArgumentException
+     */
+    #[Override]
+    public function updateTimestamp(string $id, string $data): bool
+    {
+        return $this->write(
+            id  : $id,
+            data: $data,
+        );
+    }
+
+    /**
+     * @throws SqlInvalidArgumentException
+     */
+    #[Override]
+    public function validateId(string $id): bool
+    {
+        return false !== $this->read($id);
     }
 
     /**

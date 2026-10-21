@@ -34,6 +34,8 @@ use function time;
 #[CoversMethod(DbSessionHandler::class, 'write')]
 #[CoversMethod(DbSessionHandler::class, 'destroy')]
 #[CoversMethod(DbSessionHandler::class, 'gc')]
+#[CoversMethod(DbSessionHandler::class, 'updateTimestamp')]
+#[CoversMethod(DbSessionHandler::class, 'validateId')]
 #[RequiresPhpExtension('pdo_mysql')]
 #[Group('integration')]
 #[Group('integration-mysql')]
@@ -114,6 +116,36 @@ final class DbSessionHandlerTest extends MysqlSessionTestCase
 
         self::assertTrue($handler->write('abc', 'user|s:4:"joey";'));
         self::assertSame('user|s:4:"joey";', $handler->read('abc'));
+    }
+
+    #[Test]
+    public function updateTimestampPersistsTheSessionAndExtendsTheExpiry(): void
+    {
+        $past = date(
+            format   : 'Y-m-d H:i:s',
+            timestamp: time() - 60,
+        );
+        $this->insertRow(
+            id       : 'abc',
+            payload  : 'data',
+            expiresAt: $past,
+        );
+
+        $handler = new DbSessionHandler($this->adapter);
+
+        self::assertTrue($handler->updateTimestamp('abc', 'data'));
+        self::assertSame('data', $this->payloadOf('abc'));
+        self::assertGreaterThan($past, (string) $this->expiresAtOf('abc'));
+    }
+
+    #[Test]
+    public function validateIdReportsWhetherTheSessionIsReadable(): void
+    {
+        $handler = new DbSessionHandler($this->adapter);
+        $handler->write('abc', 'data');
+
+        self::assertTrue($handler->validateId('abc'));
+        self::assertFalse($handler->validateId('missing'));
     }
 
     #[Test]
