@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "251fb98bc5f45d87e7f7be534c426fdf",
+    "content-hash": "d4eb557f510e9a82844f8557d82fbbf9",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -10800,16 +10800,16 @@
         },
         {
             "name": "webware/webware-event",
-            "version": "1.0.0-alpha.3",
+            "version": "1.0.0-alpha.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webinertia/webware-event.git",
-                "reference": "44b8bf4dcb3cd405164bc9531767c3f28fc07f39"
+                "reference": "b0c4c39e4de0b71264cd5060ee19811d1d549da2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webinertia/webware-event/zipball/44b8bf4dcb3cd405164bc9531767c3f28fc07f39",
-                "reference": "44b8bf4dcb3cd405164bc9531767c3f28fc07f39",
+                "url": "https://api.github.com/repos/webinertia/webware-event/zipball/b0c4c39e4de0b71264cd5060ee19811d1d549da2",
+                "reference": "b0c4c39e4de0b71264cd5060ee19811d1d549da2",
                 "shasum": ""
             },
             "require": {
@@ -10826,7 +10826,7 @@
                 "phpunit/phpunit": "^13.3.0",
                 "roave/backward-compatibility-check": "^8.21.0",
                 "roave/security-advisories": "dev-master",
-                "webware/webware-tools": "^1.0.0-beta.2"
+                "webware/webware-tools": "^1.0.0-rc.8"
             },
             "type": "library",
             "autoload": {
@@ -10854,9 +10854,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webinertia/webware-event/issues",
-                "source": "https://github.com/webinertia/webware-event/tree/1.0.0-alpha.3"
+                "source": "https://github.com/webinertia/webware-event/tree/1.0.0-alpha.5"
             },
-            "time": "2026-09-29T05:32:32+00:00"
+            "time": "2026-10-25T23:54:22+00:00"
         },
         {
             "name": "webware/webware-tools",
