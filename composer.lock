@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "251fb98bc5f45d87e7f7be534c426fdf",
+    "content-hash": "d4eb557f510e9a82844f8557d82fbbf9",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -2649,7 +2649,8 @@
                 "rss": "https://github.com/phly/phly-event-dispatcher/releases.atom",
                 "source": "https://github.com/phly/phly-event-dispatcher"
             },
-            "time": "2026-09-09T16:22:59+00:00"
+            "time": "2026-09-09T16:22:59+00:00",
+            "published-time": "2026-09-09T16:24:30+00:00"
         },
         {
             "name": "php-db/phpdb-mysql",
@@ -5684,7 +5685,8 @@
                 "issues": "https://github.com/php-fig/event-dispatcher/issues",
                 "source": "https://github.com/php-fig/event-dispatcher/tree/1.0.0"
             },
-            "time": "2019-01-08T18:20:26+00:00"
+            "time": "2019-01-08T18:20:26+00:00",
+            "published-time": "2019-03-25T15:31:44+00:00"
         },
         {
             "name": "psr/http-factory",
@@ -5792,7 +5794,8 @@
             "support": {
                 "source": "https://github.com/php-fig/http-message/tree/2.0"
             },
-            "time": "2023-04-04T09:54:51+00:00"
+            "time": "2023-04-04T09:54:51+00:00",
+            "published-time": "2023-04-04T09:55:35+00:00"
         },
         {
             "name": "psr/http-server-handler",
@@ -5848,7 +5851,8 @@
             "support": {
                 "source": "https://github.com/php-fig/http-server-handler/tree/1.0.2"
             },
-            "time": "2023-04-10T20:06:20+00:00"
+            "time": "2023-04-10T20:06:20+00:00",
+            "published-time": "2023-04-10T20:07:30+00:00"
         },
         {
             "name": "psr/http-server-middleware",
@@ -5905,7 +5909,8 @@
                 "issues": "https://github.com/php-fig/http-server-middleware/issues",
                 "source": "https://github.com/php-fig/http-server-middleware/tree/1.0.2"
             },
-            "time": "2023-04-11T06:14:47+00:00"
+            "time": "2023-04-11T06:14:47+00:00",
+            "published-time": "2023-04-11T06:15:22+00:00"
         },
         {
             "name": "psr/log",
@@ -10800,16 +10805,16 @@
         },
         {
             "name": "webware/webware-event",
-            "version": "1.0.0-alpha.3",
+            "version": "1.0.0-alpha.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webinertia/webware-event.git",
-                "reference": "44b8bf4dcb3cd405164bc9531767c3f28fc07f39"
+                "reference": "b0c4c39e4de0b71264cd5060ee19811d1d549da2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webinertia/webware-event/zipball/44b8bf4dcb3cd405164bc9531767c3f28fc07f39",
-                "reference": "44b8bf4dcb3cd405164bc9531767c3f28fc07f39",
+                "url": "https://api.github.com/repos/webinertia/webware-event/zipball/b0c4c39e4de0b71264cd5060ee19811d1d549da2",
+                "reference": "b0c4c39e4de0b71264cd5060ee19811d1d549da2",
                 "shasum": ""
             },
             "require": {
@@ -10826,7 +10831,7 @@
                 "phpunit/phpunit": "^13.3.0",
                 "roave/backward-compatibility-check": "^8.21.0",
                 "roave/security-advisories": "dev-master",
-                "webware/webware-tools": "^1.0.0-beta.2"
+                "webware/webware-tools": "^1.0.0-rc.8"
             },
             "type": "library",
             "autoload": {
@@ -10854,9 +10859,10 @@
             ],
             "support": {
                 "issues": "https://github.com/webinertia/webware-event/issues",
-                "source": "https://github.com/webinertia/webware-event/tree/1.0.0-alpha.3"
+                "source": "https://github.com/webinertia/webware-event/tree/1.0.0-alpha.5"
             },
-            "time": "2026-09-29T05:32:32+00:00"
+            "time": "2026-10-25T23:54:22+00:00",
+            "published-time": "2026-10-25T23:56:25+00:00"
         },
         {
             "name": "webware/webware-tools",
@@ -10922,5 +10928,5 @@
     "platform-overrides": {
         "php": "8.4.99"
     },
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }
