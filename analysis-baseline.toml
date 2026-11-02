@@ -1,6 +1,18 @@
 variant = "loose"
 
 [[issues]]
+file = "src/Session/DbSessionHandler.php"
+code = "possible-method-access-on-null"
+message = "Attempting to call a method on `null`."
+count = 2
+
+[[issues]]
+file = "src/Session/PhpDbSessionPersistence.php"
+code = "possible-method-access-on-null"
+message = "Attempting to call a method on `null`."
+count = 1
+
+[[issues]]
 file = "vendor/php-db/phpdb/src/TableGateway/Feature/AbstractFeature.php"
 code = "uninitialized-property"
 message = 'Property `$tableGateway` is not initialized in the constructor of class `PhpDb\TableGateway\Feature\EventDispatcherFeature`.'

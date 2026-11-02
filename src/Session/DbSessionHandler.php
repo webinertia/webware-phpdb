@@ -18,6 +18,7 @@ use Override;
 use PhpDb\Adapter\AdapterInterface;
 use PhpDb\Session\Sql\Insert;
 use PhpDb\Sql\Exception\InvalidArgumentException as SqlInvalidArgumentException;
+use PhpDb\Sql\Exception\RuntimeException as SqlRuntimeException;
 use PhpDb\Sql\Sql;
 use Random\RandomException;
 use SessionHandlerInterface;
@@ -74,6 +75,7 @@ final class DbSessionHandler implements
 
     /**
      * @throws SqlInvalidArgumentException
+     * @throws SqlRuntimeException
      */
     #[Override]
     public function destroy(string $id): bool
@@ -87,6 +89,7 @@ final class DbSessionHandler implements
 
     /**
      * @throws SqlInvalidArgumentException
+     * @throws SqlRuntimeException
      */
     #[Override]
     // @mago-expect lint:variable-name -- max_lifetime is mandated by SessionHandlerInterface::gc().
@@ -110,6 +113,7 @@ final class DbSessionHandler implements
 
     /**
      * @throws SqlInvalidArgumentException
+     * @throws SqlRuntimeException
      */
     #[Override]
     public function read(string $id): string|false
@@ -128,6 +132,7 @@ final class DbSessionHandler implements
 
     /**
      * @throws SqlInvalidArgumentException
+     * @throws SqlRuntimeException
      */
     #[Override]
     public function updateTimestamp(string $id, string $data): bool
@@ -140,6 +145,7 @@ final class DbSessionHandler implements
 
     /**
      * @throws SqlInvalidArgumentException
+     * @throws SqlRuntimeException
      */
     #[Override]
     public function validateId(string $id): bool
@@ -149,6 +155,7 @@ final class DbSessionHandler implements
 
     /**
      * @throws SqlInvalidArgumentException
+     * @throws SqlRuntimeException
      */
     #[Override]
     public function write(string $id, string $data): bool

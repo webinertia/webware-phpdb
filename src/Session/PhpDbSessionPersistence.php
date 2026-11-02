@@ -26,6 +26,7 @@ use Override;
 use PhpDb\Adapter\AdapterInterface;
 use PhpDb\Session\Sql\Insert;
 use PhpDb\Sql\Exception\InvalidArgumentException as SqlInvalidArgumentException;
+use PhpDb\Sql\Exception\RuntimeException as SqlRuntimeException;
 use PhpDb\Sql\Sql;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -117,6 +118,7 @@ final class PhpDbSessionPersistence implements InitializePersistenceIdInterface,
 
     /**
      * @throws SqlInvalidArgumentException
+     * @throws SqlRuntimeException
      */
     #[Override]
     public function initializeSessionFromRequest(ServerRequestInterface $request): SessionInterface
@@ -147,6 +149,7 @@ final class PhpDbSessionPersistence implements InitializePersistenceIdInterface,
     /**
      * @throws RandomException
      * @throws SqlInvalidArgumentException
+     * @throws SqlRuntimeException
      */
     #[Override]
     public function persistSession(SessionInterface $session, ResponseInterface $response): ResponseInterface
@@ -204,6 +207,7 @@ final class PhpDbSessionPersistence implements InitializePersistenceIdInterface,
 
     /**
      * @throws SqlInvalidArgumentException
+     * @throws SqlRuntimeException
      */
     private function destroy(string $id): void
     {

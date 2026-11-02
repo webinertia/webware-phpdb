@@ -20,6 +20,7 @@ use PhpDb\Session\Console\Schema\SessionSchema;
 use PhpDb\Sql\Ddl\CreateTable;
 use PhpDb\Sql\Ddl\DropTable;
 use PhpDb\Sql\Exception\InvalidArgumentException as SqlInvalidArgumentException;
+use PhpDb\Sql\Exception\RuntimeException as SqlRuntimeException;
 use PhpDb\Sql\Sql;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -65,6 +66,7 @@ final class InitDbCommand extends Command
     /**
      * @throws ConsoleInvalidArgumentException
      * @throws SqlInvalidArgumentException
+     * @throws SqlRuntimeException
      */
     #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -86,6 +88,7 @@ final class InitDbCommand extends Command
 
     /**
      * @throws SqlInvalidArgumentException
+     * @throws SqlRuntimeException
      */
     private function executeDdl(Sql $sql, CreateTable|DropTable $ddl): void
     {
