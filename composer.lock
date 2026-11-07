@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4eb557f510e9a82844f8557d82fbbf9",
+    "content-hash": "7e6408ebdc0d9c8fac05e66ab663334d",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -10912,16 +10912,16 @@
         },
         {
             "name": "webware/webware-event",
-            "version": "1.0.0-alpha.5",
+            "version": "1.0.0-alpha.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webinertia/webware-event.git",
-                "reference": "b0c4c39e4de0b71264cd5060ee19811d1d549da2"
+                "reference": "76cbd7a940b9df7ea46593a425ab7c3f22d346a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webinertia/webware-event/zipball/b0c4c39e4de0b71264cd5060ee19811d1d549da2",
-                "reference": "b0c4c39e4de0b71264cd5060ee19811d1d549da2",
+                "url": "https://api.github.com/repos/webinertia/webware-event/zipball/76cbd7a940b9df7ea46593a425ab7c3f22d346a0",
+                "reference": "76cbd7a940b9df7ea46593a425ab7c3f22d346a0",
                 "shasum": ""
             },
             "require": {
@@ -10935,7 +10935,7 @@
                 "infection/infection": "^0.35.0",
                 "laminas/laminas-servicemanager": "^4.5",
                 "phpbench/phpbench": "^1.7",
-                "phpunit/phpunit": "^13.3.0",
+                "phpunit/phpunit": "^13.4.4",
                 "roave/backward-compatibility-check": "^8.21.0",
                 "roave/security-advisories": "dev-master",
                 "webware/webware-tools": "^1.0.0-rc.8"
@@ -10966,10 +10966,10 @@
             ],
             "support": {
                 "issues": "https://github.com/webinertia/webware-event/issues",
-                "source": "https://github.com/webinertia/webware-event/tree/1.0.0-alpha.5"
+                "source": "https://github.com/webinertia/webware-event/tree/1.0.0-alpha.6"
             },
-            "time": "2026-10-25T23:54:22+00:00",
-            "published-time": "2026-10-25T23:56:25+00:00"
+            "time": "2026-11-07T06:52:50+00:00",
+            "published-time": "2026-11-07T06:54:38+00:00"
         },
         {
             "name": "webware/webware-tools",
