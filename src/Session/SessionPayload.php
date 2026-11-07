@@ -34,6 +34,7 @@ final class SessionPayload
      */
     public static function decode(string $payload): array
     {
+        /** @var mixed $data */
         $data = unserialize(data: $payload);
 
         /** @var array<string, mixed> */
