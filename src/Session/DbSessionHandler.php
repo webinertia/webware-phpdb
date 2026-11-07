@@ -124,7 +124,10 @@ final class DbSessionHandler implements
             ->where(['id' => $id]);
         $select->where->greaterThan('expires_at', date(format: self::TIMESTAMP_FORMAT));
 
-        $row     = $this->sql->prepareStatementForSqlObject($select)->execute()?->current();
+        /** @var mixed $row */
+        $row = $this->sql->prepareStatementForSqlObject($select)->execute()?->current();
+
+        /** @var mixed $payload */
         $payload = is_array($row) ? $row['payload'] ?? false : false;
 
         return is_string($payload) ? $payload : false;

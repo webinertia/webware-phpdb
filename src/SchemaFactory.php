@@ -92,9 +92,12 @@ final readonly class SchemaFactory
         ?string $prefix = null,
         ?string $separator = null,
     ): TableIdentifier {
-        $name       = Type\non_empty_string()->assert($schema->value);
-        $enumSchema = '' === $schema::NAME ? null : $schema::NAME;
-        $schemas    = $this->config['schemas'] ?? [];
+        $name = Type\non_empty_string()->assert($schema->value);
+
+        // mago infers string('') from SchemaInterface::NAME and ignores that an implementing
+        // enum may override it; see SchemaInterface::NAME docblock and itPreservesSchemaFromEnumConstant.
+        $enumSchema = '' === $schema::NAME ? null : $schema::NAME; // @mago-expect analysis:redundant-comparison, analysis:redundant-condition
+        $schemas = $this->config['schemas'] ?? [];
 
         return new TableIdentifier(
             table    : $name,
@@ -139,10 +142,13 @@ final readonly class SchemaFactory
         ?string $prefix = null,
         ?string $separator = null,
     ): TableIdentifier {
-        $name       = Type\non_empty_string()->assert($schema->value);
-        $enumSchema = '' === $schema::NAME ? null : $schema::NAME;
-        $prefixes   = $this->config['prefixes'] ?? [];
-        $schemas    = $this->config['schemas'] ?? [];
+        $name = Type\non_empty_string()->assert($schema->value);
+
+        // mago infers string('') from SchemaInterface::NAME and ignores that an implementing
+        // enum may override it; see SchemaInterface::NAME docblock and itPreservesSchemaFromEnumConstant.
+        $enumSchema = '' === $schema::NAME ? null : $schema::NAME; // @mago-expect analysis:redundant-comparison, analysis:redundant-condition
+        $prefixes = $this->config['prefixes'] ?? [];
+        $schemas  = $this->config['schemas'] ?? [];
 
         return new TableIdentifier(
             table    : $name,

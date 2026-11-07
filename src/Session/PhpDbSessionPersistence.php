@@ -135,6 +135,7 @@ final class PhpDbSessionPersistence implements InitializePersistenceIdInterface,
             ->where(['id' => $id]);
         $select->where->greaterThan('expires_at', date(format: self::TIMESTAMP_FORMAT));
 
+        /** @var mixed $row */
         $row = $this->sql->prepareStatementForSqlObject($select)->execute()?->current();
 
         if (! is_array($row)) {
