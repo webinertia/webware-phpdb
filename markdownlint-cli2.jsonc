@@ -1,0 +1,19 @@
+// markdownlint-cli2 configuration for aligned packages.
+//
+// Formatting consistency for documentation: every default rule except two.
+//
+// Off by design:
+//   MD013 line-length       - 1588 findings in webware-console alone, and prose
+//                             wrapping is not structural consistency
+//   MD060 table-column-style - alignment padding, same reasoning
+//
+// The required workflow runs this by name as the `markdown` job.
+{
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD060": false
+  },
+  "globs": ["**/*.md"],
+  "ignores": ["vendor/**", "node_modules/**"]
+}

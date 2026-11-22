@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e47d2fa98f22b1a21118414621d37a7",
+    "content-hash": "82c00556214ce7d881f2dc5a0574db41",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -10973,20 +10973,20 @@
         },
         {
             "name": "webware/webware-tools",
-            "version": "1.0.0-rc.14",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webinertia/webware-tools.git",
-                "reference": "8093557960cc9d1415bc0f8a674da752907bfcb3"
+                "reference": "eed58893e24afb25851274c6edff8183859e50d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webinertia/webware-tools/zipball/8093557960cc9d1415bc0f8a674da752907bfcb3",
-                "reference": "8093557960cc9d1415bc0f8a674da752907bfcb3",
+                "url": "https://api.github.com/repos/webinertia/webware-tools/zipball/eed58893e24afb25851274c6edff8183859e50d4",
+                "reference": "eed58893e24afb25851274c6edff8183859e50d4",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.4.0 || ~8.5.0"
+                "php": "~8.4.0 || ~8.5.0 || ~8.6.0"
             },
             "require-dev": {
                 "roave/security-advisories": "dev-master"
@@ -11011,10 +11011,10 @@
             ],
             "support": {
                 "issues": "https://github.com/webinertia/webware-tools/issues",
-                "source": "https://github.com/webinertia/webware-tools/tree/1.0.0-rc.14"
+                "source": "https://github.com/webinertia/webware-tools/tree/1.1.0"
             },
-            "time": "2026-11-13T09:23:54+00:00",
-            "published-time": "2026-11-13T13:26:52+00:00"
+            "time": "2026-11-22T07:25:33+00:00",
+            "published-time": "2026-11-22T07:25:58+00:00"
         }
     ],
     "aliases": [],
@@ -11030,7 +11030,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "~8.4.1 || ~8.5.0"
+        "php": "~8.4.1 || ~8.5.0 || ~8.6.0"
     },
     "platform-dev": {},
     "platform-overrides": {

@@ -32,55 +32,55 @@ layers the bridge's wiring on top of PhpDb's.
 
 1. Install the package:
 
-```bash
-composer require webware/webware-phpdb
-```
+   ```bash
+   composer require webware/webware-phpdb
+   ```
 
 2. Merge its providers in the consumer's config aggregator:
 
-```php
-use Laminas\ConfigAggregator\ConfigAggregator;
+   ```php
+   use Laminas\ConfigAggregator\ConfigAggregator;
 
-$aggregator = new ConfigAggregator([
-    PhpDb\ConfigProvider::class,
-    PhpDb\WebwareProvider::class,
-    // ...
-    Mezzio\Session\ConfigProvider::class,
-    // After every provider that declares SessionPersistenceInterface:
-    // it re-points that alias at the database persistence.
-    PhpDb\Session\SessionProvider::class,
-]);
-```
+   $aggregator = new ConfigAggregator([
+       PhpDb\ConfigProvider::class,
+       PhpDb\WebwareProvider::class,
+       // ...
+       Mezzio\Session\ConfigProvider::class,
+       // After every provider that declares SessionPersistenceInterface:
+       // it re-points that alias at the database persistence.
+       PhpDb\Session\SessionProvider::class,
+   ]);
+   ```
 
-`PhpDb\WebwareProvider` shares no config keys with `PhpDb\ConfigProvider`, so their relative order
-does not change the merged result. `SessionProvider` is the one with an ordering requirement.
+   `PhpDb\WebwareProvider` shares no config keys with `PhpDb\ConfigProvider`, so their relative order
+   does not change the merged result. `SessionProvider` is the one with an ordering requirement.
 
 3. Build table identifiers from a schema enum, so raw table names stay out of the application
 layer:
 
-```php
-use PhpDb\SchemaFactory;
-use PhpDb\SchemaInterface;
+   ```php
+   use PhpDb\SchemaFactory;
+   use PhpDb\SchemaInterface;
 
-enum WebwareSchema: string implements SchemaInterface
-{
-    public const string NAME = 'webware';
+   enum WebwareSchema: string implements SchemaInterface
+   {
+       public const string NAME = 'webware';
 
-    case Session = 'session';
-}
+       case Session = 'session';
+   }
 
-$factory    = $container->get(SchemaFactory::class);
-$identifier = $factory(WebwareSchema::Session);
+   $factory    = $container->get(SchemaFactory::class);
+   $identifier = $factory(WebwareSchema::Session);
 
-$identifier->getTable();  // 'session' until a prefix is configured
-$identifier->getSchema(); // 'webware'
-```
+   $identifier->getTable();  // 'session' until a prefix is configured
+   $identifier->getSchema(); // 'webware'
+   ```
 
 4. Create the session table, and let Mezzio session middleware use it:
 
-```bash
-vendor/bin/webware session:init-db
-```
+   ```bash
+   vendor/bin/webware session:init-db
+   ```
 
 With `SessionProvider` merged, `Mezzio\Session\SessionPersistenceInterface` resolves to
 `PhpDb\Session\PhpDbSessionPersistence`, which reads and writes that table.

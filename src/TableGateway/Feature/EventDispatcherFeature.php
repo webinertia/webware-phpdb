@@ -60,7 +60,7 @@ final class EventDispatcherFeature extends AbstractFeature implements EventFeatu
     public function postDelete(StatementInterface $statement, ResultInterface $result): void
     {
         $this->dispatch(
-            name: static::EVENT_POST_DELETE,
+            name  : static::EVENT_POST_DELETE,
             params: [
                 'statement' => $statement,
                 'result'    => $result,
@@ -84,7 +84,7 @@ final class EventDispatcherFeature extends AbstractFeature implements EventFeatu
     public function postInsert(StatementInterface $statement, ResultInterface $result): void
     {
         $this->dispatch(
-            name: static::EVENT_POST_INSERT,
+            name  : static::EVENT_POST_INSERT,
             params: [
                 'statement' => $statement,
                 'result'    => $result,
@@ -104,7 +104,7 @@ final class EventDispatcherFeature extends AbstractFeature implements EventFeatu
         ResultSetInterface $resultSet,
     ): void {
         $this->dispatch(
-            name: static::EVENT_POST_SELECT,
+            name  : static::EVENT_POST_SELECT,
             params: [
                 'statement'  => $statement,
                 'result'     => $result,
@@ -121,7 +121,7 @@ final class EventDispatcherFeature extends AbstractFeature implements EventFeatu
     public function postUpdate(StatementInterface $statement, ResultInterface $result): void
     {
         $this->dispatch(
-            name: static::EVENT_POST_UPDATE,
+            name  : static::EVENT_POST_UPDATE,
             params: [
                 'statement' => $statement,
                 'result'    => $result,
@@ -136,7 +136,7 @@ final class EventDispatcherFeature extends AbstractFeature implements EventFeatu
     public function preDelete(Delete $delete): void
     {
         $this->dispatch(
-            name: static::EVENT_PRE_DELETE,
+            name  : static::EVENT_PRE_DELETE,
             params: ['delete' => $delete],
         );
     }
@@ -156,7 +156,7 @@ final class EventDispatcherFeature extends AbstractFeature implements EventFeatu
     public function preInsert(Insert $insert): void
     {
         $this->dispatch(
-            name: static::EVENT_PRE_INSERT,
+            name  : static::EVENT_PRE_INSERT,
             params: ['insert' => $insert],
         );
     }
@@ -168,7 +168,7 @@ final class EventDispatcherFeature extends AbstractFeature implements EventFeatu
     public function preSelect(Select $select): void
     {
         $this->dispatch(
-            name: static::EVENT_PRE_SELECT,
+            name  : static::EVENT_PRE_SELECT,
             params: ['select' => $select],
         );
     }
@@ -180,7 +180,7 @@ final class EventDispatcherFeature extends AbstractFeature implements EventFeatu
     public function preUpdate(Update $update): void
     {
         $this->dispatch(
-            name: static::EVENT_PRE_UPDATE,
+            name  : static::EVENT_PRE_UPDATE,
             params: ['update' => $update],
         );
     }
