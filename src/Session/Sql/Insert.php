@@ -31,11 +31,12 @@ use PhpDb\Sql\Insert as BaseInsert;
 final class Insert extends BaseInsert
 {
     protected array $specifications = [
-        self::SPECIFICATION_INSERT => 'INSERT INTO %1$s (%2$s) VALUES (%3$s)'
-            . ' ON DUPLICATE KEY UPDATE'
-            . ' payload = VALUES(payload)'
-            . ', expires_at = VALUES(expires_at)'
-            . ', modified_at = VALUES(modified_at)',
+        self::SPECIFICATION_INSERT =>
+            'INSERT INTO %1$s (%2$s) VALUES (%3$s)'
+                . ' ON DUPLICATE KEY UPDATE'
+                . ' payload = VALUES(payload)'
+                . ', expires_at = VALUES(expires_at)'
+                . ', modified_at = VALUES(modified_at)',
         self::SPECIFICATION_SELECT => 'INSERT INTO %1$s %2$s %3$s',
     ];
 }
