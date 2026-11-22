@@ -4,7 +4,7 @@
 
 | Requirement | Constraint |
 |---|---|
-| PHP | `~8.4.1 \|\| ~8.5.0` |
+| PHP | `~8.4.1 \|\| ~8.5.0 \|\| ~8.6.0` |
 | `php-db/phpdb` | `0.6.x-dev` (hard requirement, and what this package shadows) |
 | `psr/container` | `^2.0` |
 
